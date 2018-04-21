@@ -46,3 +46,7 @@
 
 ## 开始开发页面
 - 1. 路由：yarn add react-router-dom @types/react-router-dom
+- 2. 发布到github
+    - 1. 设置package.homepage
+    - 2. git subtree push --prefix=build origin gh-pages
+- 3. 添加动画：yarn add react-transition-group @types/react-transition-group
