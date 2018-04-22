@@ -50,3 +50,32 @@
     - 1. 设置package.homepage
     - 2. git subtree push --prefix=build origin gh-pages
 - 3. 添加动画：yarn add react-transition-group @types/react-transition-group
+
+## 2018-04-22
+  - 1. 使用redux开发
+    - 1. yarn add redux @types/redux react-redux
+    - 2. redux-thunk的index.d.ts报错，需要该为：
+    ```
+      import {Middleware, Dispatch} from "redux";
+      
+      
+      export type ThunkAction<R, S, E> = (dispatch: any, getState: () => S,
+                                          extraArgument: E) => R;
+      
+      declare module "redux" {
+        // export interface Dispatch<S> {
+        //   <R, E>(asyncAction: ThunkAction<R, S, E>): R;
+        // }
+      }
+      
+      
+      declare const thunk: Middleware & {
+        withExtraArgument(extraArgument: any): Middleware;
+      };
+      
+      export default thunk;
+
+    ```
+
+  - 2. 开发后端服务接口
+    - 1. 使用es6开发后端服务 sudo npm i express supervisor --save

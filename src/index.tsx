@@ -6,21 +6,27 @@ import './common/index.less';
 import './common/app-base.less';
 import registerServiceWorker from './registerServiceWorker';
 import {Switch, HashRouter as Router, Route} from 'react-router-dom';
-import Home from "./containers/Home";
-import Lesson from "./containers/Lesson";
-import Profile from "./containers/Profile";
+import store from './redux/store';
+import Home from './containers/Home';
+import Lesson from './containers/Lesson';
+import Profile from './containers/Profile';
+import {Provider} from 'react-redux';
+
+window['_store'] = store;
 
 ReactDOM.render(
-  <Router>
-    <App>
-      <Switch>
-        {/*纯粹的路由*/}
-        <Route exact path={'/'} component={Home}/>
-        <Route path={'/lesson'} component={Lesson}/>
-        <Route path={'/profile'} component={Profile}/>
-      </Switch>
-    </App>
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <App>
+        <Switch>
+          {/*纯粹的路由*/}
+          <Route exact path={'/'} component={Home}/>
+          <Route path={'/lesson'} component={Lesson}/>
+          <Route path={'/profile'} component={Profile}/>
+        </Switch>
+      </App>
+    </Router>
+  </Provider>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

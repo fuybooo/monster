@@ -7,20 +7,28 @@ const logo = require('../../logo.svg');
 export default class HomeHeader extends React.Component<any, any> {
   list = [
     {
-      label: 'NodeJs'
+      label: 'NodeJs',
+      type: 1
     },
     {
-      label: 'Angular'
+      label: 'Angular',
+      type: 2
     },
     {
-      label: 'React'
+      label: 'React',
+      type: 3
     },
     {
-      label: 'Vue'
+      label: 'Vue',
+      type: 4
     },
   ];
   switchMenu = () => {
     this.setState({menuShow: !this.state.menuShow});
+  };
+  selectMenu = (e: any) => {
+    this.props.selectMenu(e.target.getAttribute('data-type'));
+    this.switchMenu();
   };
 
   constructor(props: any) {
@@ -49,10 +57,10 @@ export default class HomeHeader extends React.Component<any, any> {
         <TransitionGroup className={'menu'}>
           {this.state.menuShow ? (
             <CSSTransition classNames={'fade'} timeout={500}>
-              <ul>
+              <ul onClick={this.selectMenu}>
                 {
                   this.list.map(item => (
-                    <li className={'item'} key={item.label}>{item.label}</li>
+                    <li className={'item'} key={item.type} data-type={item.type}>{item.label}</li>
                   ))
                 }
               </ul>

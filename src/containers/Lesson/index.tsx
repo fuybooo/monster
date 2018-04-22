@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export default class Lesson extends React.Component {
-  public render() {
+  render() {
     return (
       <div>
         Lesson

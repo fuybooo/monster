@@ -1,16 +1,13 @@
 import * as React from 'react';
 import Tab from "../components/Tab";
-import HomeHeader from "../components/HomeHeader";
 
 export default class App extends React.Component {
-  public render() {
+  render() {
     return (
       <div>
-        {/*路由*/}
+        {/*路由 - 内容区域*/}
         {this.props.children}
-        {/*头部*/}
-        <HomeHeader/>
-        {/*底部tab*/}
+        {/*底部 tab*/}
         <Tab/>
       </div>
     );
