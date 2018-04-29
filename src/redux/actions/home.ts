@@ -6,7 +6,9 @@ export const getSlider = () => (dispatch: any) => getSliders().then(sliders => d
 export const getLesson = () => (dispatch: any, getState: any) => {
   const {currentLesson, lesson: {params, hasMore}} = getState().home;
   if (hasMore) {
+    dispatch({type: Types.SET_LOADING_STATUS, loading: true});
     getLessons({currentLesson, ...params}).then(lessons => {
+      dispatch({type: Types.SET_LOADING_STATUS, loading: false});
       dispatch({
         type: Types.GET_LESSONS,
         lessons

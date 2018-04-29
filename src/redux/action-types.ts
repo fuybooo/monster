@@ -1,3 +1,4 @@
 export const SET_CURRENT_LESSON = 'SET_CURRENT_LESSON';
 export const GET_SLIDERS = 'GET_SLIDERS';
 export const GET_LESSONS = 'GET_LESSONS';
+export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';

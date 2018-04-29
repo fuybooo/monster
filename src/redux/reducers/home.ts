@@ -1,5 +1,6 @@
 import * as Types from '../action-types';
 const initState = {
+  loading: false,
   currentLesson: 0,
   sliders: [],
   lesson: {
@@ -14,6 +15,11 @@ const initState = {
 export default (state = initState, action: any) => {
   let newState = {};
   switch (action.type) {
+    case Types.SET_LOADING_STATUS:
+      newState = {
+        loading: action.loading
+      };
+      break;
     case Types.SET_CURRENT_LESSON:
       newState = {
         currentLesson: action.value

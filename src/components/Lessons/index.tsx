@@ -9,9 +9,9 @@ class Lessons extends React.Component<any, any> {
       <div>
         {
           this.props.data.length ? (
-            this.props.data.map((item: any) => (
+            this.props.data.map((item: any, index: number) => (
               <Card
-                key={item.id}
+                key={index}
                 hoverable
                 cover={<img alt={item.name} src={item.src}/>}
               >
