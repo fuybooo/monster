@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Carousel as AntdCarousel } from 'antd';
-import {Spin} from 'antd';
 class Carousel extends React.Component<any, any> {
 
   render() {
@@ -18,7 +17,7 @@ class Carousel extends React.Component<any, any> {
               }
             </AntdCarousel>
           ) : (
-            <Spin/>
+            <span>加载中...</span>
           )
         }
       </div>

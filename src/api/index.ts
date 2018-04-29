@@ -1,6 +1,6 @@
 const urlPath = '//localhost:3333';
-export const get = (url: string, data: any = {}) => {
-  return fetch(urlPath + url + '?data=' + JSON.stringify(data), {
+export const get = (url: string) => {
+  return fetch(urlPath + url, {
     method: 'get',
     credentials: 'include',
     headers: {

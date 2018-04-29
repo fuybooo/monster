@@ -1,3 +1,11 @@
+# 运行方法
+1. git clone git@github.com:fuybooo/monster.git 下载代码
+2. cd monster 进入到工程
+3. yarn 安装依赖 （需要先安装[yarn](https://yarn.bootcss.com/docs/install.html)）
+4. yarn s 运行后台服务
+5. yarn start 运行前端服务
+6. 打开浏览器输入 localhost:3000 即可运行
+7. [戳此](https://fuybooo.github.io/monster/#/)在线预览
 # Monster
    1. 创建于2018-04-21
 ## 创建项目
@@ -79,3 +87,12 @@
 
   - 2. 开发后端服务接口
     - 1. 使用es6开发后端服务 sudo npm i express supervisor --save
+## 2018-4-29
+  - 1. 目的实现分页查询课程
+    - 1. 开发简单的后端服务
+    - 2. 在api.home中定义一个查询lesson的函数
+    - 3. 在redux.action-types中定义一个type
+    - 4. 在redux.actions.home中定义一个方法去调用api
+    - 5. 在redux.reducers.home中定义一个case合并action中穿回来的数据
+    - 6. 在componentDidMount中真正调用该请求，实际调用的是4中的方法
+    - 7. 使用请求到的数据从props中获取即可

@@ -13,7 +13,11 @@ app.all('*', (req, res, next) => {
     next();
   }
 });
-let sliders = require('./mock/slider.js');
+let sliders = require('./mock/slider-list.js');
 app.get('/sliders', (req, res) => {
   res.json(sliders);
+});
+let lessons = require('./mock/lesson-list.js');
+app.get('/lessons/:type/:page_number/:page_size', (req, res) => {
+  res.json(lessons);
 });
