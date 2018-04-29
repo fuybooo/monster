@@ -5,6 +5,7 @@ import HomeHeader from '../../components/HomeHeader';
 import Carousel from '../../components/Carousel';
 import Lessons from '../../components/Lessons';
 import Scroll from '../../components/Scroll';
+import util from '../../common/util';
 
 class Home extends React.Component<any, any> {
   // 子组件向父组件传递数据
@@ -14,9 +15,24 @@ class Home extends React.Component<any, any> {
   loadMore = () => {
     this.props.getLesson();
   };
+  /**
+   * 组件完成时加载数据
+   **/
   componentDidMount() {
-    this.props.getSlider();
-    this.props.getLesson();
+    (this.refs.scroll as Element).scrollTop = util.getStorage(util.storageKey.scrollTop);
+    if (!this.props.home.lesson.list.length) {
+      this.props.getSlider();
+      this.props.getLesson();
+    } else {
+      // 强制更新组件
+      this.forceUpdate();
+    }
+  }
+  /**
+   * 组件卸载时执行
+   **/
+  componentWillUnmount() {
+    util.setStorage(util.storageKey.scrollTop, (this.refs.scroll as Element).scrollTop);
   }
   render() {
     const {loading, lesson: {hasMore}} = this.props.home;

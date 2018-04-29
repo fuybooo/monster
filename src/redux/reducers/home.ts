@@ -22,7 +22,15 @@ export default (state = initState, action: any) => {
       break;
     case Types.SET_CURRENT_LESSON:
       newState = {
-        currentLesson: action.value
+        currentLesson: action.currentLesson,
+        lesson: {
+          ...state.lesson,
+          list: [],
+          params: {
+            ...state.lesson.params,
+            page_number: 1
+          }
+        }
       };
       break;
     case Types.GET_SLIDERS:

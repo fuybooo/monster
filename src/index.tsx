@@ -11,6 +11,7 @@ import Home from './containers/Home';
 import Lesson from './containers/Lesson';
 import Profile from './containers/Profile';
 import {Provider} from 'react-redux';
+import Detail from './containers/Detail';
 
 window['_store'] = store;
 
@@ -23,6 +24,7 @@ ReactDOM.render(
           <Route exact path={'/'} component={Home}/>
           <Route path={'/lesson'} component={Lesson}/>
           <Route path={'/profile'} component={Profile}/>
+          <Route path={'/detail'} component={Detail}/>
         </Switch>
       </App>
     </Router>
