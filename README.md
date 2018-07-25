@@ -96,3 +96,8 @@
     - 5. 在redux.reducers.home中定义一个case合并action中穿回来的数据
     - 6. 在componentDidMount中真正调用该请求，实际调用的是4中的方法
     - 7. 使用请求到的数据从props中获取即可
+## 2018-7-25
+  - 1. 在新环境中启动项目
+      - 1. 安装yarn，windows可以在微云中的dev-env中下载yarn
+      - 2. 安装supervisor
+  - 2. 使用node连接mysql数据库

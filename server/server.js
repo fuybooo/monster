@@ -14,6 +14,7 @@ app.all('*', (req, res, next) => {
   }
 });
 let sliders = require('./mock/slider-list.js');
+require('./db.js');
 app.get('/sliders', (req, res) => {
   res.json(sliders);
 });
