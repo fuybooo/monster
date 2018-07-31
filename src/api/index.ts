@@ -1,7 +1,7 @@
 const urlPath = '//localhost:3333';
 export const get = (url: string) => {
   return fetch(urlPath + url, {
-    method: 'get',
+    method: 'post',
     credentials: 'include',
     headers: {
       accept: 'application/json'
@@ -10,7 +10,7 @@ export const get = (url: string) => {
 };
 export const post = (url: string, data: any = {}) => {
   return fetch(urlPath + url, {
-    method: 'get',
+    method: 'post',
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',

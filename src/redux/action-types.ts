@@ -2,3 +2,7 @@ export const SET_CURRENT_LESSON = 'SET_CURRENT_LESSON';
 export const GET_SLIDERS = 'GET_SLIDERS';
 export const GET_LESSONS = 'GET_LESSONS';
 export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';
+
+export const GET_MENUS = 'GET_MENUS';
+export const APPEND_MENUS = 'APPEND_MENUS';
+export const AFTER_APPEND_MENUS = 'AFTER_APPEND_MENUS';

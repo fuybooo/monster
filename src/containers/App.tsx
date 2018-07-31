@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Tab from "../components/Tab";
+import Tab from '../components/Tab';
+import settings from '../common/settings';
 
 export default class App extends React.Component {
   render() {
@@ -8,7 +9,15 @@ export default class App extends React.Component {
         {/*路由 - 内容区域*/}
         {this.props.children}
         {/*底部 tab*/}
-        <Tab/>
+        {
+          (() => {
+            if (settings.project === 'api-doc') {
+              return (null);
+            } else {
+              return (<Tab/>);
+            }
+          })()
+        }
       </div>
     );
   }

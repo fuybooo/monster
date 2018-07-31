@@ -12,6 +12,9 @@ import Lesson from './containers/Lesson';
 import Profile from './containers/Profile';
 import {Provider} from 'react-redux';
 import Detail from './containers/Detail';
+import settings from './common/settings';
+import ApiDocHome from "./components/ApiDoc/Home";
+import './common/theme.less';
 
 window['_store'] = store;
 
@@ -19,13 +22,24 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
-        <Switch>
-          {/*纯粹的路由*/}
-          <Route exact path={'/'} component={Home}/>
-          <Route path={'/lesson'} component={Lesson}/>
-          <Route path={'/profile'} component={Profile}/>
-          <Route path={'/detail'} component={Detail}/>
-        </Switch>
+        {
+          (() => {
+            if (settings.project === 'api-doc') {
+              return (
+                <Switch>
+                  <Route exact path={'/'} component={ApiDocHome}/>
+                </Switch>
+              );
+            } else {
+              return (<Switch>
+                        <Route exact path={'/'} component={Home}/>
+                        <Route path={'/lesson'} component={Lesson}/>
+                        <Route path={'/profile'} component={Profile}/>
+                        <Route path={'/detail'} component={Detail}/>
+                      </Switch>);
+            }
+          })()
+        }
       </App>
     </Router>
   </Provider>,
