@@ -14,7 +14,7 @@ import {Provider} from 'react-redux';
 import Detail from './containers/Detail';
 import settings from './common/settings';
 import ApiDocHome from "./components/ApiDoc/Home";
-import './common/theme.less';
+
 
 window['_store'] = store;
 

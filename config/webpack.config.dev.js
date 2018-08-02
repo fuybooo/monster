@@ -1,5 +1,4 @@
 'use strict';
-
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
@@ -15,6 +14,12 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 // 手动配置按模块导入antd
 const tsImportPluginFactory = require('ts-import-plugin');
 const {getLoader} = require("react-app-rewired");
+// 配置theme
+const pkg = require(paths.appPackageJson);
+let theme = {};
+if (pkg.theme && typeof(pkg.theme) === 'object') {
+  theme = pkg.theme;
+}
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -234,10 +239,15 @@ let config = {
                   ],
                 },
               },
-              require.resolve('less-loader'),
+              {
+                loader: require.resolve('less-loader'),
+                options: {
+                  modifyVars: theme
+                },
+              },
             ],
           },
-          // "file" loader makes sure those assets get served by WebpackDevServer.
+         // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
           // This loader doesn't use a "test" so it will catch all modules
@@ -331,8 +341,8 @@ tsLoader.options = {
     before: [tsImportPluginFactory({
       libraryName: 'antd',
       libraryDirectory: 'es',
-      style: 'css',
-      // style: true,
+      // style: 'css',
+      style: true,
     })]
   })
 };

@@ -17,6 +17,12 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 手动配置按模块导入antd
 const tsImportPluginFactory = require('ts-import-plugin');
 const {getLoader} = require("react-app-rewired");
+// 配置theme
+const pkg = require(paths.appPackageJson);
+let theme = {};
+if (pkg.theme && typeof(pkg.theme) === 'object') {
+  theme = pkg.theme;
+}
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -260,7 +266,12 @@ let config = {
                   ],
                 },
               },
-              require.resolve('less-loader'),
+              {
+                loader: require.resolve('less-loader'),
+                options: {
+                  modifyVars: theme
+                },
+              },
             ],
           },
           // "file" loader makes sure assets end up in the `build` folder.
@@ -426,8 +437,8 @@ tsLoader.options = {
     before: [tsImportPluginFactory({
       libraryName: 'antd',
       libraryDirectory: 'es',
-      style: 'css',
-      // style: true,
+      // style: 'css',
+      style: true,
     })]
   })
 };
